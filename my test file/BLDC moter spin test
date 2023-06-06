@@ -1,0 +1,39 @@
+// BLDC 모터와 ESC를 이용하여 아두이노에서 모터 회전 제어하는 예제 코드
+
+#include <Servo.h>
+
+// ESC와 모터 핀 설정
+int escPin = 11, escPin2 = 10, escPin3 = 9, escPin4 = 6, Pinspeed=100;
+int motorPin = 10, Pinspeed_test;
+char date ;
+Servo esc, esc2, esc3, esc4;
+
+
+
+void setup() {
+  // ESC 객체를 선언하고 연결된 핀, 최소 PWM 값 및 최대 PWM 값 설정
+  esc.attach(escPin, 1000, 2000);
+  esc2.attach(escPin2, 1000, 2000);
+  esc3.attach(escPin3, 1000, 2000);
+  esc4.attach(escPin4, 1000, 2000);
+  Serial.begin(9600);
+}
+
+void loop() { 
+  Pinspeed = Serial.parseInt();
+  //if(Pinspeed_test != 0){
+    //Pdinspeed = Pinspeed_test;
+    Serial.println(Pinspeed);
+  }
+  esc.writeMicroseconds(Pinspeed);  // data.toInt(data) 아두이노 char to int
+  esc2.writeMicroseconds(Pinspeed);
+  esc3.writeMicroseconds(Pinspeed);
+  esc4.writeMicroseconds(Pinspeed);
+  //Serial.println(Pinspeed);
+    
+}  
+  
+
+  // 모터를 최대 속도로 회전시킵니다.
+
+  
